@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/d239cac0a2.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Rosario&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Landing Page</title>
+  </head>
+  <body>
+    <header id="header">
+      <nav id="nav-bar">
+        <a href="#" style="text-decoration: none">
+          <div class="img-container">
+            <img
+              id="header-img"
+              src="https://assets.codepen.io/4021828/open_books_logo.png"
+              alt="open book company logo"
+            />
+            <span id="logo-text">Open Book</span>
+          </div>
+        </a>
+        <div class="nav-links">
+          <li>
+            <a href="#features" class="nav-link">Features</a>
+          </li>
+          <li>
+            <a href="#process" class="nav-link">Process</a>
+          </li>
+          <li>
+            <a href="#pricing" class="nav-link">Pricing</a>
+          </li>
+        </div>
+      </nav>
+    </header>
+    <div class="landing">
+      <div class="landing-content-email">
+        <h1>The best in books!</h1>
+        <p>Making your next book should be easy.</p>
+        <form id="form" action="https://www.freecodecamp.com/email-submit">
+          <label for="email"></label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+          />
+          <input type="submit" id="submit" />
+        </form>
+      </div>
+      <div class="landing-content-image">
+        <img src="https://assets.codepen.io/4021828/undraw_book_lover_mkck.png" alt="artwork of woman sitting on 3 large books while readind a book" />
+      </div>
+    </div>
+    <section class="features" id="features">
+      <div class="features-content premium">
+        <div>
+          <i
+            class="fas fa-medal fa-4x fa-icon animate__animated animate__fadeInDown"
+          ></i>
+          <h2 class="icon-title">Premium Materials</h2>
+        </div>
+        <p class="icon-text">
+          Our books are bookstore quality books. We use the finest materials to
+          provide your books with a professional look and durable feel. We have
+          an in house patented process that assures premium.
+        </p>
+      </div>
+      <div class="features-content shipping">
+        <div>
+          <i
+            class="fas fa-shipping-fast fa-4x fa-icon animate__animated animate__fadeInLeft"
+          ></i>
+          <h2 class="icon-title">Fast Shipping</h2>
+        </div>
+        <p class="icon-text">
+          Open Books offers one of the fastest turn around times in the
+          industry. Have a tight deadline? We're the ones for the job! Our
+          unique relationship suppliers protect your tight windows.
+        </p>
+      </div>
+      <div class="features-content quality">
+        <div>
+          <i
+            class="fas fa-trophy fa-4x fa-icon animate__animated animate__flipInX"
+          ></i>
+          <h2 class="icon-title">Quality Assurance</h2>
+        </div>
+        <p class="icon-text">
+          Mistakes and misprints are costly, that's why we make sure all of the
+          books that we print go through a 13 point quality assurance check
+          before they get printed. Our team of experts comb through your book to
+          make sure it's edited and printed right the first time.
+        </p>
+      </div>
+    </section>
+    <section class="video" id="process">
+      <h2 style="color: #fff; font-size: 2rem">Process & Quality</h2>
+      <br />
+      <div class="video-section">
+        <video id="video" width="40%" height="40%" controls>
+          <source
+            src="https://assets.codepen.io/4021828/Video+Inside+A+Library.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <video width="40%" height="40%" controls>
+          <source
+            src="https://assets.codepen.io/4021828/Pexels+Videos+3444.mp4"
+            type="video/mp4"
+          />
+        </video>
+      </div>
+    </section>
+    <section class="pricing" id="pricing">
+      <div class="pricing-card">
+        <div>
+          <h3>Basic</h3>
+          <h4>$99</h4>
+        </div>
+        <hr />
+        <div class="pricing-card-text">
+          <p>Starting quality</p>
+          <p>Up to 5 edits</p>
+          <p>Up to 200 pages</p>
+        </div>
+        <button class="plan">Choose Plan</button>
+      </div>
+      <div class="pricing-card">
+        <div>
+          <h3>Startup</h3>
+          <h4>$199</h4>
+        </div>
+        <hr />
+        <div class="pricing-card-text">
+          <p>Premium quality</p>
+          <p>Up to 15 edits</p>
+          <p>Up to 400 pages</p>
+        </div>
+        <button class="plan">Choose Plan</button>
+      </div>
+      <div class="pricing-card">
+        <div>
+          <h3>Enterprise</h3>
+          <h4>$299</h4>
+        </div>
+        <hr />
+        <div class="pricing-card-text">
+          <p>White glove quality</p>
+          <p>Up to 25 edits</p>
+          <p>Up to 1200 pages</p>
+        </div>
+        <button class="plan">Choose Plan</button>
+      </div>
+    </section>
+    <footer></footer>
+    <!-- Freecodecamps project testing script -->
+    <!-- <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script> -->
+  </body>
+</html>

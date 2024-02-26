@@ -1,0 +1,10 @@
+{
+  "name": "transfers",
+  "actions": {
+    "view": "TR101",
+    "create": "TR301",
+    "edit": "TR201",
+    "delete": "TR401",
+    "other": [{ "name": "", "code": "TR" }]
+  }
+}

@@ -1,0 +1,111 @@
+.gl-alert {
+  @apply text-base;
+  @apply relative;
+  @apply px-9;
+  @apply py-5;
+
+  &-not-dismissible {
+    @apply pr-5;
+  }
+
+  &-no-icon {
+    @apply pl-5;
+  }
+
+  .gl-link:not(.gl-label-link) {
+    @apply text-blue-600;
+    @apply underline;
+
+    &:hover {
+      @apply text-blue-700;
+    }
+  }
+}
+
+.gl-alert-sticky {
+  @apply sticky;
+  @apply top-0;
+}
+
+.gl-alert-title {
+  @apply text-base;
+  @apply font-bold;
+  @apply leading-normal;
+  @apply mt-0;
+  @apply mb-3;
+}
+
+.gl-alert-icon {
+  @apply absolute;
+  @apply top-5;
+  @apply left-5;
+  @apply w-5;
+  @apply h-5;
+  // @apply fill-current-color;
+}
+
+.gl-alert-icon-no-title {
+  @apply mt-1;
+}
+
+.gl-alert-body {
+  @apply leading-[20px];
+}
+
+.gl-alert-actions {
+  @apply flex;
+  @apply mt-5;
+}
+
+.gl-alert-action {
+  @apply mr-3;
+  @apply text-base;
+  @apply leading-normal;
+}
+
+// This is the replacement for .gl-alert-dismiss
+.gl-dismiss-btn {
+  @apply absolute;
+  @apply top-4;
+  @apply right-4;
+}
+
+.gl-alert-danger {
+  @apply bg-red-50;
+
+  .gl-alert-icon {
+    @apply text-red-600;
+  }
+}
+
+.gl-alert-warning {
+  @apply bg-orange bg-opacity-20;
+
+  .gl-alert-icon {
+    @apply text-orange;
+  }
+}
+
+.gl-alert-tip {
+  @apply bg-gray-50;
+
+  .gl-alert-icon {
+    @apply text-gray-600;
+  }
+}
+
+.gl-alert-info {
+  @apply bg-blue-50;
+
+  .gl-alert-icon {
+    @apply text-blue-600;
+  }
+}
+
+.gl-alert-success {
+  @apply bg-green-50;
+
+  .gl-alert-icon {
+    @apply text-green-600;
+  }
+}

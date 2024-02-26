@@ -1,0 +1,10 @@
+{
+  "name": "adjustments",
+  "actions": {
+    "view": "ADJ101",
+    "create": "ADJ301",
+    "edit": "ADJ201",
+    "delete": "ADJ401",
+    "other": [{ "name": "", "code": "ADJ" }]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "accounts",
+  "actions": {
+    "view": "ITM101",
+    "create": "ITM301",
+    "edit": "ITM201",
+    "delete": "ITM401",
+    "other": [
+      { "name": "", "code": "ITM" }
+    ]
+  }
+}

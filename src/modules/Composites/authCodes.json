@@ -1,0 +1,12 @@
+{
+  "name": "composites",
+  "actions": {
+    "view": "CPS101",
+    "create": "CPS301",
+    "edit": "CPS201",
+    "delete": "CPS401",
+    "other": [
+      { "name": "", "code": "CPS" }
+    ]
+  }
+}

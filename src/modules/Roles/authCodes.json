@@ -1,0 +1,10 @@
+{
+  "name": "category",
+  "actions": {
+    "view": "CT101",
+    "create": "CT301",
+    "edit": "CT201",
+    "delete": "CT401",
+    "other": [{ "name": "", "code": "CT" }]
+  }
+}

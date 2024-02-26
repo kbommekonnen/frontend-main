@@ -1,0 +1,37 @@
+image: node:18
+stages:          # List of stages for jobs, and their order of execution
+  - build
+  - test
+  - deploy
+
+build-job:       # This job runs in the build stage, which runs first.
+  stage: build
+  script:
+    - echo "Compiling the code..."
+    - echo "Compile complete.."
+
+deploy_to_dev_ec2:
+    stage: deploy
+    before_script:
+        - apt-get update -qq
+        - apt-get install -qq git
+        #checks if ssh-agent is already installed and if not, then install it
+        - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+        - eval $(ssh-agent -s)
+        - echo "$STAGING_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+        - mkdir -p ~/.ssh
+        - chmod 700 ~/.ssh
+        - npm install
+        - npm run build
+        #starts ssh-agent
+    script:
+        - scp -o StrictHostKeyChecking=no -r dist/* $EC2_PATH:$FRONT_END_PATH
+        
+    only:
+      refs:
+        - dev
+
+
+    
+
+

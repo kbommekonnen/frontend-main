@@ -1,0 +1,70 @@
+@import "./base.css";
+#app {
+  /* max-width: 1280px; */
+  margin: 0 auto;
+  /* padding: 2rem; */
+  font-weight: normal;
+}
+
+scroll {
+  position: relative;
+  overflow: hidden;
+}
+/* limit lines */
+
+.limit-lines {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+.limit-lines-1 {
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+}
+.limit-lines-2 {
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+.limit-lines-3 {
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}
+.limit-lines-4 {
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+}
+.limit-lines-5 {
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+}
+
+
+.shadow-top {
+  @apply shadow-inner;
+}
+.light-title {
+  @apply text-textLight capitalize font-semibold tracking-wider opacity-75;
+}
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+}
+
+@media (hover: hover) {
+  a:hover {
+    color: hsla(160, 100%, 37%, 1);
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    place-items: center;
+  }
+  #app {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0;
+  }
+}

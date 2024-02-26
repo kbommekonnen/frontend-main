@@ -1,0 +1,197 @@
+<template>
+  <div class="h-fullspace-y-2">
+    <div class="flex flex-col space-y-1h-full">
+      <data-table
+        title="Bulk Import Accounts"
+        :showHeader="true"
+        :headers="headers"
+        :accounts="accounts"
+        letCreate
+        :isWorking="loading"
+        createLabel="Import Accounts"
+        :createHandler="handleSave"
+        class="flex-grow"
+      >
+      </data-table>
+
+      <div class="flex space-x-2 justify-end bg-white text-textMedium">
+        <input
+          v-if="fileSelector"
+          type="file"
+          class="hidden"
+          ref="csvFileInput"
+          @input="handleFileSelect"
+        />
+        <base-button
+          :label="importing ? 'importing' : 'import csv'"
+          :primary="true"
+          class="text-sm px-2 rounded"
+          :class="{ 'bg-brightGray hover:text-primary': !importing }"
+          :isWorking="importing"
+          @click="openFileSelector"
+        />
+        <base-button
+          label="remove all rows"
+          :primary="true"
+          class="text-sm px-2 rounded bg-brightGray hover:text-primary"
+          @click="removeAllRows"
+        />
+        <base-button
+          label="add row"
+          :primary="true"
+          class="text-sm px-2 rounded bg-brightGray hover:text-primary"
+          @click="addRow(accounts.length - 1)"
+        />
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+import { computed, inject, nextTick, ref } from "vue"
+import { importAccountsHeaders } from "../headers"
+import DataTable from "@/components/table/DataTable.vue"
+export default {
+  setup() {
+    let accounts = ref([])
+    let errors = ref([])
+    let loading = ref(false)
+    let importing = ref(false)
+    let fileSelector = ref(false)
+    let csvFileInput = ref(null)
+    const postRequest = inject("postRequest")
+    let formTemplate = computed(() => {
+      let template = {
+        name: "",
+        code: "",
+        manufacturer: "",
+        brand: "",
+        size: "",
+        unit: "",
+        onStore: 0,
+      }
+      return template
+    })
+
+    function handleSave() {
+      loading.value = true
+      postRequest({
+        url: "/account/bulk-import",
+        data: { accounts: accounts.value },
+      })
+      loading.value = false
+    }
+
+    function addNewAccount(account) {
+      console.log("account", account)
+      accounts.value.push(account)
+    }
+    function addRow(index) {
+      accounts.value = [
+        ...accounts.value.slice(0, index + 1),
+        { ...formTemplate.value },
+        ...accounts.value.slice(index + 1).map(({ ...rest }) => ({ ...rest })),
+      ]
+    }
+
+    function removeAllRows() {
+      clear()
+      errors.value = []
+    }
+    function clear() {
+      accounts.value = []
+    }
+    // function importCsv(file) {
+    //   importing.value = true
+    //   this.$papa.parse(file, {
+    //     skipEmptyLines: true,
+    //     complete: ({ data }) => {
+    //       importing.value = false
+    //       // let lastIndex = this.accounts.length;
+    //       data.slice(1).forEach((row) => {
+    //         let Account = Object.keys(formTemplate.value).reduce(
+    //           (Account, key) => ({
+    //             ...Account,
+    //             [key]: row[data[0].indexOf(key)],
+    //           }),
+    //           {},
+    //         )
+    //         // console.log(data, row);
+    //         addNewAccount(Account)
+    //       })
+    //       resetFile()
+    //     },
+    //   })
+    // }
+    function openFileSelector() {
+      fileSelector.value = true
+      nextTick(() => {
+        csvFileInput.value.click()
+      })
+    }
+    function resetFile() {
+      fileSelector.value = false
+    }
+    return {
+      accounts,
+      errors,
+      loading,
+      importing,
+      fileSelector,
+      csvFileInput,
+      addNewAccount,
+      addRow,
+      removeAllRows,
+      openFileSelector,
+      resetFile,
+      handleSave,
+    }
+  },
+  components: { DataTable },
+  computed: {
+    headers() {
+      return importAccountsHeaders
+    },
+  },
+  methods: {
+    importCsv(file) {
+      console.log(file)
+      let template = {
+        name: "",
+        code: "",
+        manufacturer: "",
+        brand: "",
+        size: "",
+        unit: "",
+        onStore: 0,
+      }
+
+      //   this.importing = true
+      this.$papa.parse(file, {
+        skipEmptyLines: true,
+        complete: ({ data }) => {
+          console.log(data)
+          this.importing = false
+          // let lastIndex = this.accounts.length;
+          data.slice(1).forEach((row) => {
+            let Account = Object.keys(template).reduce(
+              (Account, key) => ({
+                ...Account,
+                [key]: row[data[0].indexOf(key)],
+              }),
+              {},
+            )
+            console.log(data, row)
+            this.addNewAccount(Account)
+          })
+          this.resetFile()
+        },
+      })
+    },
+    handleFileSelect() {
+      let file = this.$refs["csvFileInput"].files[0]
+      this.importCsv(file)
+    },
+  },
+}
+</script>
+<style></style>
